@@ -86,158 +86,29 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [Bootstrap](https://getbootstrap.com/) - Frontend framework for responsive design
 - [SQLite](https://www.sqlite.org/) - Database used for this project (you can modify this section if using a different database)
 
+sk Management API
+Overview
+This is a Django-based Task Management API that provides endpoints for user authentication and task management. The API allows users to register, login, and perform CRUD (Create, Read, Update, Delete) operations on tasks.
+Features
 
-API Documentation
-The Task Management System API provides endpoints for user authentication, task management, and more.
+User Registration
+User Authentication (Login)
+Create Tasks
+List Tasks
+Read Individual Task
+Update Tasks
+Delete Tasks
 
-Base URL
-arduino
-Copy
-Edit
-http://127.0.0.1:8000/api
+Endpoints
 Authentication
-This API uses Basic Authentication.
 
-Login
-Endpoint: /login/
+POST /login/: User login
+POST /register/: User registration
 
-Method: POST
+Tasks
 
-Description: Logs in a user.
-
-Request Body:
-
-json
-Copy
-Edit
-{
-  "username": "string",
-  "password": "string"
-}
-Responses:
-
-200 OK: Login successful
-
-400 Bad Request: Invalid credentials
-
-Register
-Endpoint: /register/
-
-Method: POST
-
-Description: Registers a new user.
-
-Request Body:
-
-json
-Copy
-Edit
-{
-  "username": "string",
-  "email": "string",
-  "first_name": "string (optional)",
-  "last_name": "string (optional)",
-  "password": "string"
-}
-Responses:
-
-201 Created: User created successfully
-
-400 Bad Request: Invalid input
-
-Task Management
-Get All Tasks
-Endpoint: /tasks/
-
-Method: GET
-
-Description: Retrieves a list of all tasks.
-
-Responses:
-
-200 OK: A list of tasks
-
-Create Task
-Endpoint: /tasks/
-
-Method: POST
-
-Description: Creates a new task.
-
-Request Body:
-
-json
-Copy
-Edit
-{
-  "title": "string",
-  "description": "string (optional)",
-  "due_date": "string (optional)"
-}
-Responses:
-
-201 Created: Task created successfully
-
-Get Task by ID
-Endpoint: /tasks/{id}/
-
-Method: GET
-
-Description: Retrieves details of a specific task by ID.
-
-Responses:
-
-200 OK: Task details
-
-Update Task
-Endpoint: /tasks/{id}/
-
-Method: PUT
-
-Description: Updates a task by ID.
-
-Request Body:
-
-json
-Copy
-Edit
-{
-  "title": "string",
-  "description": "string (optional)",
-  "due_date": "string (optional)"
-}
-Responses:
-
-200 OK: Task updated successfully
-
-Delete Task
-Endpoint: /tasks/{id}/
-
-Method: DELETE
-
-Description: Deletes a task by ID.
-
-Responses:
-
-204 No Content: Task deleted successfully
-
-Definitions
-UserLogin
-Properties:
-
-username (string, required): The user's username
-
-password (string, required): The user's password
-
-UserRegister
-Properties:
-
-username (string, required): The user's username
-
-email (string, required): The user's email address
-
-first_name (string, optional): The user's first name
-
-last_name (string, optional): The user's last name
-
-password (string, required): The user's password
+GET /tasks/: List all tasks
+POST /tasks/: Create a new task
+GET /tasks/{id}/: Retrieve a specific task
+PUT /tasks/{id}/: Update a specific task
+DELETE /tasks/{id}/: Delete a specific task
