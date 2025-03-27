@@ -7,14 +7,12 @@ A web-based task management system built using [Django](https://www.djangoprojec
 - User authentication (login, registration)
 - Task creation, editing, and deletion
 - Task viewing with details
-- Responsive design for mobile and desktop views
 
 ## Technologies Used
 
-- **Backend**: Django, Python
-- **Frontend**: Bootstrap
-- **Database**: SQLite (or specify your database)
-- **Others**: jQuery (if used), etc.
+- **Backend**: Django, Python, Django REST Framework
+- **Frontend**: HTML, Bootstrap, jQuery/AJAX
+- **Database**: SQLite
 
 ## Installation
 
@@ -87,3 +85,159 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [Django](https://www.djangoproject.com/) - The web framework used for the backend
 - [Bootstrap](https://getbootstrap.com/) - Frontend framework for responsive design
 - [SQLite](https://www.sqlite.org/) - Database used for this project (you can modify this section if using a different database)
+
+
+API Documentation
+The Task Management System API provides endpoints for user authentication, task management, and more.
+
+Base URL
+arduino
+Copy
+Edit
+http://127.0.0.1:8000/api
+Authentication
+This API uses Basic Authentication.
+
+Login
+Endpoint: /login/
+
+Method: POST
+
+Description: Logs in a user.
+
+Request Body:
+
+json
+Copy
+Edit
+{
+  "username": "string",
+  "password": "string"
+}
+Responses:
+
+200 OK: Login successful
+
+400 Bad Request: Invalid credentials
+
+Register
+Endpoint: /register/
+
+Method: POST
+
+Description: Registers a new user.
+
+Request Body:
+
+json
+Copy
+Edit
+{
+  "username": "string",
+  "email": "string",
+  "first_name": "string (optional)",
+  "last_name": "string (optional)",
+  "password": "string"
+}
+Responses:
+
+201 Created: User created successfully
+
+400 Bad Request: Invalid input
+
+Task Management
+Get All Tasks
+Endpoint: /tasks/
+
+Method: GET
+
+Description: Retrieves a list of all tasks.
+
+Responses:
+
+200 OK: A list of tasks
+
+Create Task
+Endpoint: /tasks/
+
+Method: POST
+
+Description: Creates a new task.
+
+Request Body:
+
+json
+Copy
+Edit
+{
+  "title": "string",
+  "description": "string (optional)",
+  "due_date": "string (optional)"
+}
+Responses:
+
+201 Created: Task created successfully
+
+Get Task by ID
+Endpoint: /tasks/{id}/
+
+Method: GET
+
+Description: Retrieves details of a specific task by ID.
+
+Responses:
+
+200 OK: Task details
+
+Update Task
+Endpoint: /tasks/{id}/
+
+Method: PUT
+
+Description: Updates a task by ID.
+
+Request Body:
+
+json
+Copy
+Edit
+{
+  "title": "string",
+  "description": "string (optional)",
+  "due_date": "string (optional)"
+}
+Responses:
+
+200 OK: Task updated successfully
+
+Delete Task
+Endpoint: /tasks/{id}/
+
+Method: DELETE
+
+Description: Deletes a task by ID.
+
+Responses:
+
+204 No Content: Task deleted successfully
+
+Definitions
+UserLogin
+Properties:
+
+username (string, required): The user's username
+
+password (string, required): The user's password
+
+UserRegister
+Properties:
+
+username (string, required): The user's username
+
+email (string, required): The user's email address
+
+first_name (string, optional): The user's first name
+
+last_name (string, optional): The user's last name
+
+password (string, required): The user's password
