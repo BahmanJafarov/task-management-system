@@ -86,29 +86,104 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [Bootstrap](https://getbootstrap.com/) - Frontend framework for responsive design
 - [SQLite](https://www.sqlite.org/) - Database used for this project (you can modify this section if using a different database)
 
-sk Management API
-Overview
+# Task Management API
+
+## Overview
 This is a Django-based Task Management API that provides endpoints for user authentication and task management. The API allows users to register, login, and perform CRUD (Create, Read, Update, Delete) operations on tasks.
-Features
 
-User Registration
-User Authentication (Login)
-Create Tasks
-List Tasks
-Read Individual Task
-Update Tasks
-Delete Tasks
+## Features
+- User Registration
+- User Authentication
+- Create Tasks
+- List Tasks
+- Read Individual Task
+- Update Tasks
+- Delete Tasks
 
-Endpoints
-Authentication
+## Endpoints
 
-POST /login/: User login
-POST /register/: User registration
+### Authentication
+- `POST /login/`: User login
+- `POST /register/`: User registration
 
-Tasks
+### Tasks
+- `GET /tasks/`: List all tasks
+- `POST /tasks/`: Create a new task
+- `GET /tasks/{id}/`: Retrieve a specific task
+- `PUT /tasks/{id}/`: Update a specific task
+- `DELETE /tasks/{id}/`: Delete a specific task
 
-GET /tasks/: List all tasks
-POST /tasks/: Create a new task
-GET /tasks/{id}/: Retrieve a specific task
-PUT /tasks/{id}/: Update a specific task
-DELETE /tasks/{id}/: Delete a specific task
+## Prerequisites
+- Python 3.12+
+- Django
+- Django Rest Framework
+
+## Installation
+
+1. **Clone the repository**
+```bash
+git clone https://github.com/yourusername/task-management-api.git
+cd task-management-api
+```
+
+2. **Create a virtual environment**
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+```
+
+3. **Install dependencies**
+```bash
+pip install -r requirements.txt
+```
+
+4. **Run database migrations**
+```bash
+python manage.py migrate
+```
+
+5. **Start the development server**
+```bash
+python manage.py runserver
+```
+
+## Authentication
+The API uses token-based authentication. Include the authentication token in the request headers after logging in.
+
+## Example Requests
+
+### Login
+```bash
+curl -X POST http://localhost:8000/login/ \
+     -H "Content-Type: application/json" \
+     -d '{"username":"youruser", "password":"yourpassword"}'
+```
+
+### Create Task
+```bash
+curl -X POST http://localhost:8000/tasks/ \
+     -H "Authorization: Token your-auth-token" \
+     -H "Content-Type: application/json" \
+     -d '{"title":"New Task", "description":"Task description"}'
+```
+
+## Error Handling
+- `400`: Bad Request
+- `401`: Unauthorized
+- `404`: Not Found
+- `500`: Internal Server Error
+
+## Contributing
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some feature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## License
+Distributed under the MIT License. See `LICENSE` for more information.
+
+## Contact
+Your Name - your.email@example.com
+
+**Project Link**: [https://github.com/yourusername/task-management-api](https://github.com/yourusername/task-management-api)
